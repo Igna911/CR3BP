@@ -160,6 +160,10 @@ void calc_E(Body * body, double dt) {
     *body->M -= 2*pi;
     *body->M0 -= 2*pi;
   }
+
+  delete[] dE;
+  delete[] esinE;
+  delete[] ecosE;
   // std::cout<<*body->E<<std::endl;
 }
 

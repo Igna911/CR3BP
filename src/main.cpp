@@ -239,14 +239,14 @@ int main(void)
 
 		count2 ++;
 
-		// delete particle;
-		// delete planet;
-		// delete star;
-		//
-		// delete[] r_planet;
-		// delete[] r_particle;
-		// delete[] v_planet;
-		// delete[] v_particle;
+		 delete particle;
+		 delete planet;
+		 delete star;
+
+		 delete[] r_planet;
+		 delete[] r_particle;
+		 delete[] v_planet;
+		 delete[] v_particle;
 
 		// particle_a_new += 0.5;
 		// delete[] particle;

@@ -188,7 +188,7 @@ int main(void)
 //				// std::cout<<t2/P<<std::endl;
 //			}
 
-			if (count%10000 == 0) {
+			if (count%100000 == 0) {
 				// std::cout<<std::setprecision(10)<<(double)*particle->a<<"\t"<<std::setprecision(10)<<*particle->esinE<<std::endl;
 				std::cout<<std::setprecision(5)<<"Complete: "<<t2/(integrate_time*P) * 100<<"% \t"<<t2/P<<" years"<<std::endl;
 			}

@@ -3,15 +3,14 @@
 
 #include "vector"
 #include <string>
-#include <quadmath.h>
 // #include <cstring>
 
 //Class to populate fields (i.e. velocity etc) at HALF grid spacing
 class Body {
 public:
   double * mass;
-  long double * a;
-  long double * e;
+  double * a;
+  double * e;
   double * ecosE;
   double * esinE;
   double * M0;

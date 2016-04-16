@@ -1,6 +1,7 @@
 CC=g++
 
-CFLAGS= -Ofast -ffloat-store -lquadmath -c -Wall  -std=c++11
+CFLAGS= -Ofast -ffloat-store -c -Wall  -std=c++11
+#CFLAGS= -c -g -O0 -Wall  -std=c++11
 
 SRCDIR = /source/ODIS/
 BUILDDIR = /source/build/
@@ -9,15 +10,16 @@ all: cr3bp
 
 cr3bp: main.o body.o orbitalIntegrator.o
 	$(CC) main.o body.o orbitalIntegrator.o -o cr3bp
+#	$(CC) main.o -o cr3bp
 
-main.o: main.cpp
-	$(CC) $(CFLAGS) main.cpp
+main.o: src\main.cpp
+	$(CC) $(CFLAGS) src\main.cpp
 
-body.o: body.cpp
-	$(CC) $(CFLAGS) body.cpp
+body.o: src\body.cpp
+	$(CC) $(CFLAGS) src\body.cpp
 
-orbitalIntegrator.o: orbitalIntegrator.cpp
-		$(CC) $(CFLAGS) orbitalIntegrator.cpp
+orbitalIntegrator.o: src\orbitalIntegrator.cpp
+	$(CC) $(CFLAGS) src\orbitalIntegrator.cpp
 
 
 clean:

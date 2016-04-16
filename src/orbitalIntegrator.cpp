@@ -4,7 +4,6 @@
 #include "body.h"
 #include "orbitalIntegrator.h"
 #include <math.h>
-#include <quadmath.h>
 #include <iostream>
 #include <iomanip>
 

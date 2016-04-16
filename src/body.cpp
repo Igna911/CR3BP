@@ -17,8 +17,8 @@ Body::Body(double mass_, double a_, double e_, double M_, double E_, double * r_
     // strcpy(name_str, name_.c_str());
 
     mass = new double;
-    a = new long double;
-    e = new long double;
+    a = new double;
+    e = new double;
     ecosE = new double;
     esinE = new double;
     M = new double;
@@ -84,8 +84,12 @@ void Body::update_velocity(void) {
 void Body::output_position(void) {
   FILE * file_out;
 
-  file_out = fopen(&("/home/hamish/Dropbox/LPL/classes/2016/dynamics/hw9/"+name_str)[0], "a+");
-  fprintf(file_out, "%.30f \t %.30f \n", r[0],r[1]);
-  fclose(file_out);
+//  file_out = fopen(&("/home/hamish/Dropbox/LPL/classes/2016/dynamics/hw9/"+name_str)[0], "a+");
+//  fprintf(file_out, "%.30f \t %.30f \n", r[0],r[1]);
+//  fclose(file_out);
+
+    file_out = fopen(&("C:\\Users\\hamis\\OneDrive\\Documents\\GitHub\\CR3BP\\results\\" + name_str)[0], "a+");
+    fprintf(file_out, "%.30f \t %.30f \n", r[0],r[1]);
+    fclose(file_out);
 
 }

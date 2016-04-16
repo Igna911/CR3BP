@@ -6,22 +6,22 @@
 #include <iomanip>
 #include <string>
 
-// extern double pi = 3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679821480865132823066470938446095505822317253594081284811174502841027019385211055596446229489549303819644288109756659334461284756;
 
 
 int main(void)
 {
+	double pi = 3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679821480865132823066470938446095505822317253594081284811174502841027019385211055596446229489549303819644288109756659334461284756;
 	double m2 = 1e-3;
 	double m1 = 1.0 - m2;
-	double t1 = 0.0;
-	double t2 = 0.0;
+	double t1;
+	double t2;
 	double planet_a = 1.0;
 	int iters = 1;
 	// double particle_a[] = {0.98,0.96,0.94,0.92,0.90,0.88,0.86,0.84,0.82,0.80};
 	double B = 0.7631;
 	double A = 0.7629;
 	// double particle_a_new = pow(1.0/pow(4.0/3.0,2.0),1./3.0);
-	double particle_a_new = 1.1;//0.7631428283688879;////0.8254818122236567;// -- 3/4 resonance!
+	double particle_a_new = 0.9;//0.7631428283688879;////0.8254818122236567;// -- 3/4 resonance!
 	// 0.7631428283688879 -- 3/2 resonance;
 	double particle_a_old = 0.0;
 	double P = 2*pi;
@@ -165,7 +165,7 @@ int main(void)
 			count ++;
 
 			//mag(particle->r) > mag(planet->r) ||
-			if (isnan(particle->r[0]) || *particle->e >= 1.0) {
+			if (isnan(particle->r[0]) || mag(particle->r) > mag(planet->r) || *particle->e >= 1.0) {
 				std::cout<<"FAILED AT "<<count<<std::endl;
 				// std::cout<<"e: "<<*particle->e<<std::endl;
 				// std::cout<<"a: "<<*particle->a<<std::endl;

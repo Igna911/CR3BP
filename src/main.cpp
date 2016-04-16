@@ -18,17 +18,18 @@ int main(void)
 	double planet_a = 1.0;
 	int iters = 1;
 	// double particle_a[] = {0.98,0.96,0.94,0.92,0.90,0.88,0.86,0.84,0.82,0.80};
-	double B = 0.7631;
-	double A = 0.7629;
+	double B = 0.99999;
+	double A = 0.8;
 	// double particle_a_new = pow(1.0/pow(4.0/3.0,2.0),1./3.0);
-	double particle_a_new = 0.9;//0.7631428283688879;////0.8254818122236567;// -- 3/4 resonance!
+//	double particle_a_new = 0.9;//0.7631428283688879;////0.8254818122236567;// -- 3/4 resonance!
 	// 0.7631428283688879 -- 3/2 resonance;
+	double particle_a_new = (A+B)/2.0;
 	double particle_a_old = 0.0;
 	double P = 2*pi;
 	double dt = P/8000.0;
 	double integrate_time = 1e4;
 	bool stable = true;
-	bool bisect = false;
+	bool bisect = true;
 	int count = 0;
 	int count2 = 0;
 	int count_old = 0;
@@ -52,7 +53,7 @@ int main(void)
 	// if (!bisect) particle_a_new = B;
 	// else particle_a_new = 0.5*(A+B);
 
-	while (count2<iters) {//fabs(particle_a_new - particle_a_old) > 0.05) {
+	while (bisect) {//fabs(particle_a_new - particle_a_old) > 0.05) {
 		stable = true;
 
 		// if (!bisect) particle_a_new -= inc;
@@ -178,14 +179,14 @@ int main(void)
 				break;
 			}
 
-			if (count%40 == 0) {
-				planet->output_position();
-				particle->output_position();
-
-
-				// std::cout<<std::setprecision(20)<<fabs(*particle->M - *particle->M0)<<std::endl;
-				// std::cout<<t2/P<<std::endl;
-			}
+//			if (count%40 == 0) {
+//				planet->output_position();
+//				particle->output_position();
+//
+//
+//				// std::cout<<std::setprecision(20)<<fabs(*particle->M - *particle->M0)<<std::endl;
+//				// std::cout<<t2/P<<std::endl;
+//			}
 
 			if (count%10000 == 0) {
 				// std::cout<<std::setprecision(10)<<(double)*particle->a<<"\t"<<std::setprecision(10)<<*particle->esinE<<std::endl;
@@ -205,36 +206,36 @@ int main(void)
 
 		particle_a_old = particle_a_new;
 
-		// if (stable) {
-		// 	std::cout<<"Stable: "<<particle_a_new<<" at count: "<<count<<std::endl;
-		// 	if (bisect) {
-		// 		A = particle_a_new;
-		// 		std::cout<<"Orbit a: "<<particle_a_new<<" is stable."<<std::endl;
-		// 		return 0;
-		// 		// particle_a_new = 0.5*(A+B);
-		// 		// std::cout<<"Moving to orbit a="<<particle_a_new<<std::endl<<std::endl;
-		// 	}
-		//
-		// 	//
-		// }
-		// else {
-		// 	std::cout<<"Unstable: "<<particle_a_new<<" at count: "<<count<<std::endl;
-		// 	if (bisect) {
-		// 		if (count > B_count) {
-		// 			A = particle_a_new;
-		// 			std::cout<<"Orbit a: "<<particle_a_new<<" is unstable."<<std::endl;
-		// 			particle_a_new = 0.5*(A+B);
-		// 			std::cout<<"Moving to orbit a="<<particle_a_new<<std::endl<<std::endl;
-		// 		}
-		// 		else {
-		// 			A = particle_a_new;
-		// 			std::cout<<"Orbit a: "<<particle_a_new<<" is unstable."<<std::endl;
-		// 			particle_a_new = 0.5*(A+B);
-		// 			std::cout<<"Moving to orbit a="<<particle_a_new<<std::endl<<std::endl;
-		// 		}
-		// 	}
+		 if (stable) {
+//			std::cout<<"Stable: "<<particle_a_new<<" at count: "<<count<<std::endl;
+//			if (bisect) {
+			A = particle_a_new;
+			std::cout<<"Orbit a: "<<particle_a_new<<" is stable."<<std::endl;
 
-		// }
+			particle_a_new = 0.5*(A+B);
+			std::cout<<"Moving to orbit a="<<particle_a_new<<std::endl<<std::endl;
+//			}
+
+			//
+		 }
+		 else {
+			std::cout<<"Unstable: "<<particle_a_new<<" at count: "<<count<<std::endl;
+//			if (bisect) {
+//				if (count > B_count) {
+			B = particle_a_new;
+			std::cout<<"Orbit a: "<<particle_a_new<<" is unstable."<<std::endl;
+			particle_a_new = 0.5*(A+B);
+			std::cout<<"Moving to orbit a="<<particle_a_new<<std::endl<<std::endl;
+//				}
+//				else {
+//					A = particle_a_new;
+//					std::cout<<"Orbit a: "<<particle_a_new<<" is unstable."<<std::endl;
+//					particle_a_new = 0.5*(A+B);
+//					std::cout<<"Moving to orbit a="<<particle_a_new<<std::endl<<std::endl;
+//				}
+			}
+
+//		 }
 
 		count2 ++;
 

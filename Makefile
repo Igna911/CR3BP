@@ -1,7 +1,7 @@
 CC=g++
 
-CFLAGS= -Ofast -ffloat-store -c -Wall  -std=c++11
-#CFLAGS= -c -g -O0 -Wall  -std=c++11
+#CFLAGS= -Ofast -ffloat-store -c -Wall  -std=c++11
+CFLAGS= -c -g -O0 -Wall  -std=c++11
 
 SRCDIR = /source/ODIS/
 BUILDDIR = /source/build/
